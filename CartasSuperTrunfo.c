@@ -28,21 +28,21 @@ int main() {
     
     char primeiro_estado[5], segundo_estado[5];
 
-    char primeiro_codigo_da_carta[10],segundo_codigo_da_carta[10];
+    char primeiro_codigo_da_carta[10], segundo_codigo_da_carta[10];
 
-    char primeira_nome_da_cidade[20],segunda_nome_da_cidade[20];
+    char primeira_nome_da_cidade[20], segunda_nome_da_cidade[20];
 
-    unsigned long int primeira_populacao,segunda_populacao;
+    unsigned long int primeira_populacao, segunda_populacao;
 
-    float primeira_area,segunda_area;
+    float primeira_area, segunda_area;
 
-    float primeiro_pib,segundo_pib;
+    float primeiro_pib, segundo_pib;
 
-    int primeiro_numero_de_pontos_turisticos,segundo_numero_de_pontos_turisticos;
+    int primeiro_numero_de_pontos_turisticos, segundo_numero_de_pontos_turisticos;
 
-    double primeira_densidade_populacional,segunda_densidade_populacional;
+    double primeira_densidade_populacional, segunda_densidade_populacional;
 
-    double primeiro_pib_per_capita,segundo_pib_per_capita;
+    double primeiro_pib_per_capita, segundo_pib_per_capita;
 
     float primeiro_super_poder, segundo_super_poder;
 
@@ -199,6 +199,16 @@ B
 1200.25
 300.50
 30
+
+    Exemplo
+Comparação de Cartas:
+População: Carta 1 venceu (1)
+Área: Carta 1 venceu (1)
+PIB: Carta 1 venceu (1)
+Pontos Turísticos: Carta 1 venceu (1)
+Densidade Populacional: Carta 2 venceu (0)
+PIB per Capita: Carta 1 venceu (1)
+Super Poder: Carta 1 venceu (1)
 
 
 Carta 1:
