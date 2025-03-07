@@ -176,61 +176,22 @@ int main() {
     printf("PIB per Capita: Carta %d venceu (%d)\n",(2-resultado_pib_per_capita), resultado_pib_per_capita);
     printf("Super Poder: Carta %d venceu (%d)\n",(2-resultado_poder), resultado_poder);
 
+
+    // Tema 2: Desafio: nível novato Comparação Atributo
+
+    printf("\nComparação de cartas (Atributo: População):");
+    printf("\nCarta 1 - %s (%s%s): %lu", primeira_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_populacao);
+    printf("\nCarta 2 - %s (%s%s): %lu", segunda_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_populacao);
+
+    char vencedor_nome [20];
+    if (resultado_populacao){
+        strcpy(vencedor_nome, primeira_nome_da_cidade);
+    }
+    else{
+        strcpy(vencedor_nome, segunda_nome_da_cidade);
+    };
+
+    printf("\nResultado: Carta %d (%s) venceu!", (2-resultado_populacao), vencedor_nome);
+
     return 0;
 }
-
-
-
-/*
-            Exemplo de Saída: Nível Aventureiro
-
-            Inputs -- Copie e cole no terminal como 14 linhas de texto
-São Paulo
-A
-01
-12325000
-1521.11
-699.28
-50
-Rio de Janeiro
-B
-02
-6748000
-1200.25
-300.50
-30
-
-    Exemplo
-Comparação de Cartas:
-População: Carta 1 venceu (1)
-Área: Carta 1 venceu (1)
-PIB: Carta 1 venceu (1)
-Pontos Turísticos: Carta 1 venceu (1)
-Densidade Populacional: Carta 2 venceu (0)
-PIB per Capita: Carta 1 venceu (1)
-Super Poder: Carta 1 venceu (1)
-
-
-Carta 1:
-Estado: A
-Código: A01
-Nome da Cidade: São Paulo
-População: 12325000
-Área: 1521.11 km²
-PIB: 699.28 bilhões de reais
-Número de Pontos Turísticos: 50
-Densidade Populacional: 8102.47 hab/km²
-PIB per Capita: 56724.32 reais
-
-Carta 2:
-Estado: B
-Código: B02
-Nome da Cidade: Rio de Janeiro
-População: 6748000
-Área: 1200.25 km²
-PIB: 300.50 bilhões de reais
-Número de Pontos Turísticos: 30
-Densidade Populacional: 5622.24 hab/km²
-PIB per Capita: 44532.91 reais
-
-*/
