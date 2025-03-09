@@ -1,11 +1,44 @@
 #include <stdio.h>
-
+#include <string.h>
 // Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//  Divida a população da cidade pela sua área Densidade Populacional
-//  Divida o PIB da cidade pela sua população   PIB per Capita
+
+void Menu_Escolhas(int atributo_numero, int *atributo_excluido, int *atributo_selecionado) {
+    int opcao;
+    printf("\nEscolha o %d° Atributo \n", atributo_numero);
+    printf(atributo_excluido != 1 ?"1. População\n":"x. População\n" );
+    printf(atributo_excluido != 2 ?"2. Área\n":"x. Área\n" );
+    printf(atributo_excluido != 3 ?"3. PIB\n":"x. PIB\n" );
+    printf(atributo_excluido != 4 ?"4. Pontos Turísticos\n":"x. Pontos Turísticos\n" );
+    printf(atributo_excluido != 5 ?"5. Densidade Demografica\n":"x. Densidade Demografica\n" );
+    scanf("%d", &opcao);
+
+    switch (opcao) {
+        case 1:
+            atributo_excluido!=1 ?*atributo_selecionado = 1:Menu_Escolhas(atributo_numero, atributo_excluido, atributo_selecionado);
+            printf(atributo_excluido!= 1 ?"\nPopulação Adicionada\n":"\n População Já Selecionada" );
+            break;
+        case 2:
+            atributo_excluido !=2 ?*atributo_selecionado =2:Menu_Escolhas(atributo_numero, atributo_excluido, atributo_selecionado);
+            printf(atributo_excluido != 2 ?"\nÁrea Adicionada\n":"\nÁrea Já Selecionada" );
+            break;
+        case 3:
+            atributo_excluido !=3 ?*atributo_selecionado =3:Menu_Escolhas(atributo_numero, atributo_excluido, atributo_selecionado);
+            printf(atributo_excluido != 3 ?"\nPIB Adicionada\n":"\nPIB Já Selecionada" );
+            break;
+        case 4:
+            atributo_excluido !=4 ?*atributo_selecionado =4:Menu_Escolhas(atributo_numero, atributo_excluido, atributo_selecionado);
+            printf(atributo_excluido != 4 ?"\nPontos Turísticos Adicionada\n":"\nPontos Turísticos Já Selecionada" );
+            break;
+        case 5:
+            atributo_excluido !=5 ?*atributo_selecionado =5:Menu_Escolhas(atributo_numero, atributo_excluido, atributo_selecionado);
+            printf(atributo_excluido != 5 ?"\nDensidade Demografica Adicionada\n":"\nDensidade Demografica Já Selecionada" );
+            break;
+        default:
+            printf("Opção Inválida\n");
+            Menu_Escolhas(atributo_numero, atributo_excluido, atributo_selecionado);
+            break;
+    }
+}
 
 
 int Definir_Vencedor(char atributo[20], int primeiro_parametro, int segundo_parametro) {
@@ -52,7 +85,7 @@ int main() {
 
     char primeiro_codigo_da_carta[10], segundo_codigo_da_carta[10];
 
-    char primeira_nome_da_cidade[20], segunda_nome_da_cidade[20];
+    char primeiro_nome_da_cidade[20], segundo_nome_da_cidade[20];
 
     unsigned long int primeira_populacao, segunda_populacao;
 
@@ -85,7 +118,7 @@ int main() {
         case 2:
             printf("Comparando Carta\n");
             // Valores da primeira carta
-            strcpy(primeira_nome_da_cidade, "São Paulo");
+            strcpy(primeiro_nome_da_cidade, "São Paulo");
             strcpy(primeiro_estado, "A");
             strcpy(primeiro_codigo_da_carta, "01");
             primeira_populacao = 12325000;
@@ -94,7 +127,7 @@ int main() {
             primeiro_numero_de_pontos_turisticos = 50;
 
             // Valores da segunda carta
-            strcpy(segunda_nome_da_cidade, "Rio de Janeiro");
+            strcpy(segundo_nome_da_cidade, "Rio de Janeiro");
             strcpy(segundo_estado, "B");
             strcpy(segundo_codigo_da_carta, "02");
             segunda_populacao = 6748000;
@@ -111,8 +144,8 @@ int main() {
         printf("Proxima Carta -> 1° Carta - : \n");
 
         printf("1° Carta - Digite o Nome da Cidade: \n");
-        fgets(primeira_nome_da_cidade, 20, stdin);
-        primeira_nome_da_cidade[strcspn(primeira_nome_da_cidade, "\n")] = '\0';
+        fgets(primeiro_nome_da_cidade, 20, stdin);
+        primeiro_nome_da_cidade[strcspn(primeiro_nome_da_cidade, "\n")] = '\0';
         
         printf("1° Carta - Digite uma Letra de 'A' a 'H' correspondente ao Estado: \n");
         fgets(primeiro_estado, 5, stdin);
@@ -141,11 +174,11 @@ int main() {
         
         // Segunda Carta
         printf("\nProxima Carta -> 2° Carta - : \n");
-        segunda_nome_da_cidade[strcspn(segunda_nome_da_cidade, "\n")] = '\0';
+        segundo_nome_da_cidade[strcspn(segundo_nome_da_cidade, "\n")] = '\0';
         
         printf("2° Carta - Digite o Nome da Cidade: \n");
-        fgets(segunda_nome_da_cidade, 20, stdin);
-        segunda_nome_da_cidade[strcspn(segunda_nome_da_cidade, "\n")] = '\0';
+        fgets(segundo_nome_da_cidade, 20, stdin);
+        segundo_nome_da_cidade[strcspn(segundo_nome_da_cidade, "\n")] = '\0';
         
         printf("2° Carta - Digite uma Letra de 'A' a 'H' correspondente ao Estado: \n");
         fgets(segundo_estado, 5, stdin);
@@ -192,7 +225,7 @@ int main() {
     printf("\nCarta 1: ");
     printf("\nEstado: %s", primeiro_estado);
     printf("\nCódigo: %s%s", primeiro_estado, primeiro_codigo_da_carta);
-    printf("\nNome da Cidade: %s", primeira_nome_da_cidade);
+    printf("\nNome da Cidade: %s", primeiro_nome_da_cidade);
     printf("\nPopulação: %d", primeira_populacao);
     printf("\nÁrea: %.2f km²", primeira_area);
     printf("\nPIB: %.2f bilhões de reais", primeiro_pib);
@@ -204,7 +237,7 @@ int main() {
     printf("\nCarta 2: ");
     printf("\nEstado: %s", segundo_estado);
     printf("\nCódigo: %s%s", segundo_estado, segundo_codigo_da_carta);
-    printf("\nNome da Cidade: %s", segunda_nome_da_cidade);
+    printf("\nNome da Cidade: %s", segundo_nome_da_cidade);
     printf("\nPopulação: %d", segunda_populacao);
     printf("\nÁrea: %.2f km²", segunda_area);
     printf("\nPIB: %.2f bilhões de reais", segundo_pib);
@@ -213,7 +246,7 @@ int main() {
     printf("\nPIB per Capita: %.2f reais", segundo_pib_per_capita);
     printf("\nSuper Poder: %.2f Poder\n", segundo_super_poder);
     
-    // Variaveis População
+    // Variaveis Resultados
     int resultado_populacao = primeira_populacao>=segunda_populacao; 
     int resultado_area = primeira_area>=segunda_area; 
     int resultado_pib = primeiro_pib >= segundo_pib; 
@@ -224,6 +257,7 @@ int main() {
 
     // Comparação Final de Cartas -- Resultado
     printf("\n\nComparação de Cartas:\n");
+
     // utilização de (2-resultado) para alterar a primeira variavel de 0 ou 1 para 1 ou 2, definindo assim qual a carta ganhadora
     printf("População: Carta %d venceu (%d)\n",(2-resultado_populacao), resultado_populacao);
     printf("Área: Carta %d venceu (%d)\n",(2-resultado_area), resultado_area);
@@ -235,52 +269,119 @@ int main() {
 
 
 
-    // Tema 2 : Desafio: nível aventureiro
-    int opcao;
-    char primeiro_codigo = (char)primeiro_estado + (char)primeiro_codigo_da_carta;
-    char segundo_codigo = (char)segundo_estado + (char)segundo_codigo_da_carta;
-
-    printf("\n    --Comparações de Cartas--   ");
-    printf("\n1- Comparação de População");
-    printf("\n2- Comparação de Área");
-    printf("\n3- Comparação de PIB");
-    printf("\n4- Comparação de Número de pontos turísticos");
-    printf("\n5- Comparação de Densidade demográfica");
-    printf("\n0- Sair\n");
-    scanf("%d", &opcao);
-
     int resultado;
 
-    switch(opcao){
+    int primeiro_atributo , segundo_atributo ;
+    Menu_Escolhas(1,"0", &primeiro_atributo);
+    Menu_Escolhas(2,primeiro_atributo, &segundo_atributo);
+
+    float soma_geral_primeira_carta ;
+    float soma_geral_segunda_carta;
+    switch(primeiro_atributo){
         case 1:
             resultado = Definir_Vencedor("População" ,primeira_populacao, segunda_populacao);
             printf("\nComparação de Atributo (Atributo: População):");
-            printf("\nCarta 1 - %s (%s%s): %lu", primeira_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_populacao);
-            printf("\nCarta 2 - %s (%s%s): %lu", segunda_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_populacao);
+            printf("\nCarta 1 - %s (%s%s): %lu", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_populacao);
+            printf("\nCarta 2 - %s (%s%s): %lu", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_populacao);
+            soma_geral_primeira_carta = primeira_populacao;
+            soma_geral_segunda_carta = segunda_populacao;
             break;
         case 2:
             resultado = Definir_Vencedor("Área" ,primeira_area, segunda_area);
             printf("\nComparação de Atributo (Atributo: Área):");
-            printf("\nCarta 1 - %s (%s%s): %.2f km²", primeira_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_area);
-            printf("\nCarta 2 - %s (%s%s): %.2f km²", segunda_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_area);
+            printf("\nCarta 1 - %s (%s%s): %.2f km²", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_area);
+            printf("\nCarta 2 - %s (%s%s): %.2f km²", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_area);
+            soma_geral_primeira_carta = primeira_area;
+            soma_geral_segunda_carta = segunda_area;
             break;
         case 3:
             resultado = Definir_Vencedor("PIB" ,primeiro_pib, segundo_pib);
             printf("\nComparação de Atributo (Atributo: PIB):");
-            printf("\nCarta 1 - %s (%s%s): %.2f bilhões de reais", primeira_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeiro_pib);
-            printf("\nCarta 2 - %s (%s%s): %.2f bilhões de reais", segunda_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segundo_pib);
+            printf("\nCarta 1 - %s (%s%s): %.2f bilhões de reais", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeiro_pib);
+            printf("\nCarta 2 - %s (%s%s): %.2f bilhões de reais", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segundo_pib);
+            soma_geral_primeira_carta = primeiro_pib;
+            soma_geral_segunda_carta = segundo_pib;
             break;
         case 4:
             resultado = Definir_Vencedor("turísticos" ,primeiro_numero_de_pontos_turisticos, segundo_numero_de_pontos_turisticos);
             printf("\nComparação de Atributo (Atributo: Número de pontos turísticos):");
-            printf("\nCarta 1 - %s (%s%s): %d", primeira_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeiro_numero_de_pontos_turisticos);
-            printf("\nCarta 2 - %s (%s%s): %d", segunda_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segundo_numero_de_pontos_turisticos);
+            printf("\nCarta 1 - %s (%s%s): %d", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeiro_numero_de_pontos_turisticos);
+            printf("\nCarta 2 - %s (%s%s): %d", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segundo_numero_de_pontos_turisticos);
+            soma_geral_primeira_carta = primeiro_numero_de_pontos_turisticos;
+            soma_geral_segunda_carta = segundo_numero_de_pontos_turisticos;
             break;
         case 5:
             resultado = Definir_Vencedor("Densidade" ,primeira_densidade_populacional, segunda_densidade_populacional);
             printf("\nComparação de Atributo (Atributo: Densidade demográfica):");
-            printf("\nCarta 1 - %s (%s%s): %.2f hab/km²", primeira_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_densidade_populacional);
-            printf("\nCarta 2 - %s (%s%s): %.2f hab/km²", segunda_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_densidade_populacional);
+            printf("\nCarta 1 - %s (%s%s): %.2f hab/km²", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_densidade_populacional);
+            printf("\nCarta 2 - %s (%s%s): %.2f hab/km²", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_densidade_populacional);
+            soma_geral_primeira_carta = primeira_densidade_populacional;
+            soma_geral_segunda_carta = segunda_densidade_populacional;
+            break;
+        case 0:
+            printf("Saindo");
+            break;
+        default:
+            printf("Opção Invalida");
+            break;
+        
+    }
+    char vencedor_nome [20];
+    if (resultado != 2){
+        if (resultado == 0){
+            strcpy(vencedor_nome, segundo_nome_da_cidade);
+        }
+        else{
+        strcpy(vencedor_nome, primeiro_nome_da_cidade);
+        }
+        printf("\nResultado: Carta %d (%s) venceu!", (2-resultado), vencedor_nome);
+    }
+    else{
+        printf("\n %s -- Empate -- %s",primeiro_nome_da_cidade, segundo_nome_da_cidade);
+    };
+    printf("\n");
+    
+    
+    switch(segundo_atributo){
+        case 1:
+            resultado = Definir_Vencedor("População" ,primeira_populacao, segunda_populacao);
+            printf("\nComparação de Atributo (Atributo: População):");
+            printf("\nCarta 1 - %s (%s%s): %lu", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_populacao);
+            printf("\nCarta 2 - %s (%s%s): %lu", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_populacao);
+            soma_geral_primeira_carta += primeira_populacao;
+            soma_geral_segunda_carta += segunda_populacao;
+            break;
+        case 2:
+            resultado = Definir_Vencedor("Área" ,primeira_area, segunda_area);
+            printf("\nComparação de Atributo (Atributo: Área):");
+            printf("\nCarta 1 - %s (%s%s): %.2f km²", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_area);
+            printf("\nCarta 2 - %s (%s%s): %.2f km²", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_area);
+            soma_geral_primeira_carta += primeira_area;
+            soma_geral_segunda_carta += segunda_area;
+            break;
+        case 3:
+            resultado = Definir_Vencedor("PIB" ,primeiro_pib, segundo_pib);
+            printf("\nComparação de Atributo (Atributo: PIB):");
+            printf("\nCarta 1 - %s (%s%s): %.2f bilhões de reais", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeiro_pib);
+            printf("\nCarta 2 - %s (%s%s): %.2f bilhões de reais", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segundo_pib);
+            soma_geral_primeira_carta += primeiro_pib;
+            soma_geral_segunda_carta += segundo_pib;
+            break;
+        case 4:
+            resultado = Definir_Vencedor("turísticos" ,primeiro_numero_de_pontos_turisticos, segundo_numero_de_pontos_turisticos);
+            printf("\nComparação de Atributo (Atributo: Número de pontos turísticos):");
+            printf("\nCarta 1 - %s (%s%s): %d", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeiro_numero_de_pontos_turisticos);
+            printf("\nCarta 2 - %s (%s%s): %d", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segundo_numero_de_pontos_turisticos);
+            soma_geral_primeira_carta += primeiro_numero_de_pontos_turisticos;
+            soma_geral_segunda_carta += segundo_numero_de_pontos_turisticos;
+            break;
+        case 5:
+            resultado = Definir_Vencedor("Densidade" ,primeira_densidade_populacional, segunda_densidade_populacional);
+            printf("\nComparação de Atributo (Atributo: Densidade demográfica):");
+            printf("\nCarta 1 - %s (%s%s): %.2f hab/km²", primeiro_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_densidade_populacional);
+            printf("\nCarta 2 - %s (%s%s): %.2f hab/km²", segundo_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_densidade_populacional);
+            soma_geral_primeira_carta += primeira_densidade_populacional;
+            soma_geral_segunda_carta += segunda_densidade_populacional;
             break;
         case 0:
             printf("Saindo");
@@ -292,42 +393,37 @@ int main() {
     }
 
 
-    // Tema 2: Desafio: nível novato Comparação Atributo
-
-    // printf("\nComparação de cartas (Atributo: População):");
-    // printf("\nCarta 1 - %s (%s%s): %lu", primeira_nome_da_cidade, primeiro_estado, primeiro_codigo_da_carta, primeira_populacao);
-    // printf("\nCarta 2 - %s (%s%s): %lu", segunda_nome_da_cidade, segundo_estado, segundo_codigo_da_carta, segunda_populacao);
-
-    char vencedor_nome [20];
     if (resultado != 2){
         if (resultado == 0){
-            strcpy(vencedor_nome, segunda_nome_da_cidade);
+            strcpy(vencedor_nome, segundo_nome_da_cidade);
         }
         else{
-        strcpy(vencedor_nome, primeira_nome_da_cidade);
+        strcpy(vencedor_nome, primeiro_nome_da_cidade);
         }
-        printf("\nResultado: Carta %d (%s) venceu!", (2-resultado), vencedor_nome);
+        printf("\nResultado: Carta %d (%s) venceu!\n", (2-resultado), vencedor_nome);
     }
     else{
-        printf("\n %s -- Empate -- %s",primeira_nome_da_cidade, segunda_nome_da_cidade);
+        printf("\n %s -- Empate -- %s\n",primeiro_nome_da_cidade, segundo_nome_da_cidade);
     };
-
     
+
+    printf("\n Valores Totais Carta 1 -- %s", primeiro_nome_da_cidade);
+    printf("\n %2.f", soma_geral_primeira_carta);
+    printf("\n Valores Totais Carta 2 -- %s", segundo_nome_da_cidade);
+    printf("\n %2.f", soma_geral_segunda_carta);
+    // loop para testar
+    if (soma_geral_primeira_carta != soma_geral_segunda_carta){
+        if (soma_geral_primeira_carta < soma_geral_segunda_carta){
+            strcpy(vencedor_nome, segundo_nome_da_cidade);
+        }
+        else{
+        strcpy(vencedor_nome, primeiro_nome_da_cidade);
+        }
+        printf("\nResultado: Carta %d (%s) venceu!", (2-(soma_geral_primeira_carta > soma_geral_segunda_carta)), vencedor_nome);
+    }
+    else{
+        printf("\n %s -- Empate -- %s",primeiro_nome_da_cidade, segundo_nome_da_cidade);
+    };
     main();
     return 0;
 }
-
-// São Paulo
-// A
-// 01
-// 12325000
-// 1521.11
-// 699.28
-// 50
-// Rio de Janeiro
-// B
-// 02
-// 6748000
-// 1200.25
-// 300.50
-// 30
